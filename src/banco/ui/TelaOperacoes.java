@@ -333,7 +333,7 @@ public class TelaOperacoes extends javax.swing.JFrame {
                 labelMsgDeposito.setText("O valor do depósito deve ser maior que zero.");
                 return;
             }
-            contaAtual.depositar(valor);
+            bancoService.depositar(contaAtual, valor);
             atualizarSaldoExibido();
             labelMsgDeposito.setForeground(new java.awt.Color(0, 130, 0));
             labelMsgDeposito.setText(String.format("Depósito de R$ %.2f realizado com sucesso!", valor));
@@ -357,14 +357,14 @@ public class TelaOperacoes extends javax.swing.JFrame {
                 return;
             }
 
-            boolean sucesso = contaAtual.sacar(valor);
+            boolean sucesso = bancoService.sacar(contaAtual, valor);
             if (sucesso) {
                 atualizarSaldoExibido();
                 labelMsgSaque.setForeground(new java.awt.Color(0, 130, 0));
                 labelMsgSaque.setText(String.format("Saque de R$ %.2f realizado com sucesso!", valor));
                 fieldValorSaque.setValue(0.00);
                 if (contaAtual instanceof ContaCorrente cc) {
-                    labelLimiteDisponivel.setText(String.format("Limite disponível: R$ %.2f", cc.getSaldo() + cc.getLimiteChequEspecial()));
+                    labelLimiteDisponivel.setText(String.format("Limite disponível: R$ %.2f", cc.getSaldo() + cc.getLimiteChequeEspecial()));
                 }
             } else {
                 labelMsgSaque.setText("Saldo insuficiente. Operação bloqueada.");
@@ -402,9 +402,8 @@ public class TelaOperacoes extends javax.swing.JFrame {
                 return;
             }
 
-            boolean sucesso = contaAtual.sacar(valor);
+            boolean sucesso = bancoService.transferir(contaAtual, contaDestino, valor);
             if (sucesso) {
-                contaDestino.depositar(valor);
                 atualizarSaldoExibido();
                 labelMsgTransferencia.setForeground(new java.awt.Color(0, 130, 0));
                 labelMsgTransferencia.setText(String.format("Transferência de R$ %.2f para conta %s realizada com sucesso!", valor, destino));
