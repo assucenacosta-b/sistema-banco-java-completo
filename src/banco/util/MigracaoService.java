@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class MigracaoService {
 
-    private static final String PASTA_MIGRACOES = "/db/migration";
+    private static final String PASTA_MIGRACOES = "/banco/util/resources/db/migration";
 
     public static void executarMigracoes() {
         Connection conexao = ConexaoDB.getInstancia().getConexao();
@@ -54,4 +54,3 @@ public class MigracaoService {
         }
     }
 }
-

@@ -294,7 +294,7 @@ public class TelaOperacoes extends javax.swing.JFrame {
 
             if (contaAtual instanceof ContaCorrente cc) {
                 labelTipoConta.setText("Tipo: Conta Corrente");
-                labelLimiteInfo.setText(String.format("Limite Cheque Especial: R$ %.2f", cc.getLimiteChequEspecial()));
+                labelLimiteInfo.setText(String.format("Limite Cheque Especial: R$ %.2f", cc.getLimiteChequeEspecial()));
             } else if (contaAtual instanceof ContaPoupanca cp) {
                 labelTipoConta.setText("Tipo: Conta Poupança");
                 labelLimiteInfo.setText(String.format("Taxa de Rendimento: %.2f%%", cp.getTaxaRendimentoMensal()));
@@ -315,7 +315,7 @@ public class TelaOperacoes extends javax.swing.JFrame {
         if (contaAtual != null) {
             labelSaldoAtual.setText(String.format("Saldo: R$ %.2f", contaAtual.getSaldo()));
             if (contaAtual instanceof ContaCorrente cc) {
-                labelLimiteInfo.setText(String.format("Limite Cheque Especial: R$ %.2f", cc.getLimiteChequEspecial()));
+                labelLimiteInfo.setText(String.format("Limite Cheque Especial: R$ %.2f", cc.getLimiteChequeEspecial()));
             }
         }
     }

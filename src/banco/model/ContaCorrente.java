@@ -60,7 +60,5 @@ public class ContaCorrente extends ContaBancaria {
         return linhas;
     }
 
-    public double getLimiteChequEspecial() {
-        return limiteChequeEspecial;
-    }
+
 }
